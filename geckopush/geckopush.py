@@ -116,12 +116,15 @@ class BarChart(Widget):
         if data is not None:
             self.add_data(data=data)
 
-    def add_data(self, data, *args, **kwargs):
-        self.data.append(
-            {
-                "data": data
-            }
-        )
+    def add_data(self, data, name=None, *args, **kwargs):
+        _series = {
+            "data": data
+        }
+
+        if name is not None:
+            _series["name"] = name
+
+        self.data.append(_series)
 
     def add(self, x_axis_labels=None, x_axis_type=None, y_axis_format=None,
             y_axis_unit=None):
